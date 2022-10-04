@@ -1,3 +1,11 @@
+require "simplecov"
+SimpleCov.start "rails" do
+  add_filter "/bin/"
+  add_filter do |source_file|
+    source_file.lines.count < 5
+  end
+end
+
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"

@@ -1,0 +1,156 @@
+{
+  "Minitest": {
+    "coverage": {
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/models/user.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/controllers/dashboards_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/components/logo_link_component.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/components/menu_link_component.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          10,
+          10,
+          10,
+          10,
+          null,
+          null,
+          1,
+          10,
+          null,
+          null,
+          1,
+          null,
+          1,
+          10,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/components/logo_component.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/controllers/home_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/components/primary_link_button_component.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/johnwallace/workspace-hamnavoe/my_predictor/app/components/secondary_link_button_component.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      }
+    },
+    "timestamp": 1664887795
+  }
+}

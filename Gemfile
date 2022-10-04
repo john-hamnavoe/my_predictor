@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.0"
+ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
@@ -51,6 +51,13 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "pry", "~> 0.13.1"
+  gem "pry-remote", "~> 0.1.8"
+
+  # lint
+  gem "rubocop-github"
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false  
 end
 
 group :development do
@@ -69,8 +76,13 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+
+  gem "rails-controller-testing"
+  gem "simplecov", require: false  
 end
 
 gem "devise", "~> 4.8.1"
 gem "name_of_person", "~> 1.1", ">= 1.1.1"
 gem "tailwindcss-rails", "~> 2.0"
+gem "view_component", "~> 2.69"
