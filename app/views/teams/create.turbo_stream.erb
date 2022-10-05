@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "teams" do %>
+  <%= render "team", team: @team %>
+<% end %>
+<%= turbo_stream.replace "#{dom_id(Team.new)}_form" do %>
+  <%= render "form", team: Team.new(team_category_id: @team.team_category_id) %>
+<% end %>

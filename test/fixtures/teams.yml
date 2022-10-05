@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+scotland:
+  name: Scotland
+  team_category: international
+
+england:
+  name: England
+  team_category: international
+
+wales:
+  name: Wales
+  team_category: international
+
+ireland:
+  name: Ireland
+  team_category: international
+
+brazil:
+  name: Brazil
+  team_category: international
+
+argentina:
+  name: Argentina
+  team_category: international  
+
+saints:
+  name: St Mirren
+  team_category: domestic
+
+celtic:
+  name: Celtic
+  team_category: domestic
+
+rangers:
+  name: Rangers
+  team_category: domestic
+
+hearts:
+  name: Hearts
+  team_category: domestic

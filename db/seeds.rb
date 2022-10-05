@@ -9,3 +9,7 @@
 unless TeamCategory.find_by(name: "International")
   TeamCategory.create(name: "International")
 end
+
+unless TeamCategory.find_by(name: "Club")
+  TeamCategory.create(name: "Club")
+end

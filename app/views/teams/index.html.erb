@@ -1,0 +1,21 @@
+<div class="mx-auto md:w-1/2">
+  <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+    <h3 class="text-lg font-medium leading-6 text-gray-900">Teams</h3>
+  </div>
+  <%= turbo_frame_tag "teams-container", class: "block w-full py-8 px-4 border border-gray-200 shadow-sm" do %>
+    <div class="border-b border-gray-50 w-full">
+      <%= render TabsComponent.new do |tabs| %>
+        <% @team_categories.each do |team_category| %>
+          <% tabs.with_tab name: team_category.name , path: teams_path(team_category_id: team_category.id), active: (@team_category_id.to_i == team_category.id) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="py-2 px-4">
+      <%= render "form", team: Team.new(team_category_id: @team_category_id) %>
+    </div>
+    <ul id="teams">
+      <%= render @teams %>
+    </ul>
+  <% end %>
+</div>

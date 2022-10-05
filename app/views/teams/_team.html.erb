@@ -1,0 +1,5 @@
+<li id="<%= "#{dom_id(team)}_container" %>" class="py-2 px-4 border-b border-gray-300">
+  <%= turbo_frame_tag dom_id(team) do %>
+    <%= link_to team.name, edit_team_path(team) %>
+  <% end %>
+</li>

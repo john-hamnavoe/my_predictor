@@ -12,10 +12,12 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="-space-y-px rounded-md shadow-sm">
-        <%= f.label "Email address", for:"email", class:"sr-only" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm", placeholder: "Email address" %>
-        <%= f.label :password, for:"password", class:"sr-only" %>
-        <%= f.password_field :password, autocomplete: "current-password", class: "relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm", placeholder: "Password" %>
+        <%= render Forms::FieldComponent.new(f, :email, label: "Email address", label_class: "sr-only") do |field| %>
+          <% field.with_input_email(classes: "rounded-t-md", autocomplete: "email", placeholder: "Email address", autofocus: true) %>
+        <% end %>
+        <%= render Forms::FieldComponent.new(f, :password, label: "Password", label_class: "sr-only") do |field| %>
+          <% field.with_input_password(classes: "rounded-b-md", autocomplete: "current-password", placeholder: "Password") %>
+        <% end %>        
       </div>
 
       <% if devise_mapping.rememberable? %>
