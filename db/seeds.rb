@@ -13,3 +13,11 @@ end
 unless TeamCategory.find_by(name: "Club")
   TeamCategory.create(name: "Club")
 end
+
+unless ScoringSystem.find_by(name: "Standard")
+  ScoringSystem.create(name: "Standard", range: 0)
+end
+
+unless ScoringSystem.find_by(name: "Within 7")
+  ScoringSystem.create(name: "Within 7", range: 0)
+end

@@ -1,0 +1,2 @@
+class ScoringSystem < ApplicationRecord
+end
