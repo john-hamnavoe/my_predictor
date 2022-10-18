@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  user: bob
+  team_category: international
+  scoring_system: one
+  public: true
+  active: true
+  prizes: false
+
+two:
+  name: MyString
+  user: bob
+  team_category: domestic
+  scoring_system: two
+  public: false
+  active: false
+  prizes: false

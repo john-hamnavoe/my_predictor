@@ -16,7 +16,7 @@
           </button>
         </div>
         <nav class="hidden space-x-10 md:flex">
-          <%= render(MenuLinkComponent.new(title: "Competitions", path: "#")) %>                     
+          <%= render(MenuLinkComponent.new(title: "Competitions", path: competitions_path)) %>                     
           <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
           <%= render(MenuLinkComponent.new(title: "About", path: "#")) %>    
 
@@ -60,7 +60,7 @@
           </div>
           <div class="py-6 px-5">
             <div class="grid grid-cols-2 gap-4">
-              <%= render(MenuLinkComponent.new(title: "Competitions", path: "#")) %>                     
+              <%= render(MenuLinkComponent.new(title: "Competitions", path: competitions_path)) %>                     
               <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
               <%= render(MenuLinkComponent.new(title: "About", path: "#")) %>    
               <%= render(MenuLinkComponent.new(title: "Teams", path: teams_path)) %>   

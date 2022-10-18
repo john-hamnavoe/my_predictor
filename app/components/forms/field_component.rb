@@ -3,8 +3,8 @@
 class Forms::FieldComponent < ApplicationComponent
   renders_one :input, types: {
     text: ->(**args) { Forms::TextInputComponent.new(form, field, **args) },
-    # select: ->(**args) { Forms::SelectInputComponent.new(form, field, **args) },
-    # date: ->(**args) { Forms::TextInputComponent.new(form, field, type: :date, **args) },
+    select: ->(**args) { Forms::SelectInputComponent.new(form, field, **args) },
+    date: ->(**args) { Forms::TextInputComponent.new(form, field, type: :date, **args) },
     # time: ->(**args) { Forms::TextInputComponent.new(form, field, type: :time, **args) },
     email: ->(**args) { Forms::TextInputComponent.new(form, field, type: :email, **args) },    
     password: ->(**args) { Forms::TextInputComponent.new(form, field, type: :password, **args) }        

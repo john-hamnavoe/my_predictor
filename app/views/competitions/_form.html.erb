@@ -1,0 +1,47 @@
+<%= form_with(model: competition) do |form| %>
+  <% if competition.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+
+      <ul>
+        <% competition.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
+    <div class="grid grid-cols-4 gap-1">
+      <div class="col-span-2 md:col-span-4" >
+        <%= render Forms::FieldComponent.new(form, :name) do |field| %>
+          <% field.with_input_text(rounded: true) %>
+        <% end %>
+      </div>
+      <div class="col-span-2">
+        <%= render Forms::FieldComponent.new(form, :team_category_id) do |field| %>
+          <% field.with_input_select(options: team_categories_for_select, include_blank: true) %>
+        <% end %>      
+      </div>
+      <div class="col-span-2" >
+        <%= render Forms::FieldComponent.new(form, :scoring_system_id) do |field| %>
+          <% field.with_input_select(options: scoring_systems_for_select, include_blank: true) %>
+        <% end %>  
+      </div>
+      <div class="col-span-2" >
+        <%= render Forms::CheckboxInputComponent.new(form, :public) %>
+      </div>
+      <div class="col-span-2" >
+        <%= render Forms::CheckboxInputComponent.new(form, :prizes) %>
+      </div>            
+    </div>
+  </div> 
+  <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-between">
+    <div>
+      <%= render Forms::CheckboxInputComponent.new(form, :active) %>
+    </div>
+    <div class=" text-right">
+      <%= render Forms::ButtonCancelComponent.new(competitions_path) %>      
+      <%= render Forms::ButtonSubmitComponent.new(button_classes: "ml-3") %>
+    </div>
+  </div>   
+<% end %>
