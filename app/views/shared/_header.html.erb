@@ -19,7 +19,19 @@
           <%= render(MenuLinkComponent.new(title: "Competitions", path: "#")) %>                     
           <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
           <%= render(MenuLinkComponent.new(title: "About", path: "#")) %>    
-          <%= render(MenuLinkComponent.new(title: "Admin", path: "#")) %>  
+
+          <div id="admin_menu" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide" class="" role="button" data-dropdown-target="button" tabindex="0" >
+              <span class="appearance-none flex items-center  text-base font-medium text-gray-500 hover:text-gray-900">Admin
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </span>
+            </div>
+            <div data-dropdown-target="menu" class="hidden absolute mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-50">
+              <div class="p-2" role="none">
+                <%= render(MenuLinkComponent.new(title: "Teams", path: teams_path)) %>   
+              </div>
+            </div>
+          </div>            
         </nav>
         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
           <%= render(MenuLinkComponent.new(title: "Log Out", path: destroy_user_session_path, link_classes: "whitespace-nowrap", data: { turbo_method: :delete } )) %>            
@@ -51,7 +63,7 @@
               <%= render(MenuLinkComponent.new(title: "Competitions", path: "#")) %>                     
               <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
               <%= render(MenuLinkComponent.new(title: "About", path: "#")) %>    
-              <%= render(MenuLinkComponent.new(title: "Admin", path: "#")) %>
+              <%= render(MenuLinkComponent.new(title: "Teams", path: teams_path)) %>   
             </div>
             <div class="mt-6">              
               <p class="mt-6 text-center text-base font-medium text-gray-500">
