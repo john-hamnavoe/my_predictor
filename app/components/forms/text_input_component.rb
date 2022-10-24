@@ -27,6 +27,6 @@ class Forms::TextInputComponent < Forms::BaseComponent
   end
 
   def input_class
-    "#{@classes} relative block w-full appearance-none #{rounded_class} border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+    "#{@classes} relative block w-full appearance-none #{rounded_class} border border-gray-300 px-2 py-1 mb-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
   end
 end
