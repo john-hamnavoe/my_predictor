@@ -14,6 +14,33 @@ two:
   user: bob
   team_category: domestic
   scoring_system: two
-  public: false
+  public: true
+  active: true
+  prizes: false
+
+three:
+  name: MyString
+  user: bob
+  team_category: international
+  scoring_system: one
+  public: true
   active: false
   prizes: false
+
+four:
+  name: MyString
+  user: bob
+  team_category: international
+  scoring_system: one
+  public: false
+  active: true
+  prizes: false
+
+five:
+  name: MyString
+  user: sarah
+  team_category: international
+  scoring_system: one
+  public: true
+  active: true
+  prizes: false    

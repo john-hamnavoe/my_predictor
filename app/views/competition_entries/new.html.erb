@@ -1,0 +1,55 @@
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:px-0">
+    <h1 class="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Available Competitions</h1>
+
+    <div class="mt-12">
+      <section aria-labelledby="competition-select">
+        <h2 id="competition-select" class="sr-only">Select a Competition to Join</h2>
+
+        <ul role="list" class="divide-y divide-gray-200 border-t border-b border-gray-200">
+          <% @available_competitions.each do |competition| %>
+            <li class="flex py-6">
+
+              <div class="ml-4 flex flex-1 flex-col sm:ml-6">
+                <div>
+                  <div class="flex justify-between">
+                    <h4 class="text-md">
+                      <a href="#" class="font-medium text-gray-700 hover:text-gray-800"><%= competition.name %></a>
+                    </h4>
+                  </div>
+                  <p class="mt-1 text-sm text-gray-500"><%= "#{competition.fixtures.count} fixtures"%></p>
+                  <p class="mt-1 text-sm text-gray-500"><%= "Administrator: #{competition.user.name} "%></p>
+                </div>
+
+                <div class="mt-4 flex flex-1 items-end justify-between">
+                  <p class="flex items-center space-x-2 text-sm text-gray-700">
+                    <!-- Heroicon name: mini/check -->
+                    <% if competition.prizes %>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 flex-shrink-0 text-green-500">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                      </svg>
+
+                      <span>Prizes!</span>
+                    <% else %>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 flex-shrink-0 text-yellow-500">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                      </svg>
+
+                      <span>Just for fun!</span>      
+                    <% end %>   
+                  </p>
+                  <div class="ml-4">
+                    <%= render PrimaryLinkButtonComponent.new(path: competition_entries_path(params: {competition_entry: {competition_id: competition.id }}), title: "Join", small: true, data: {"turbo-method": :post}) %>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <% end %>
+
+
+          <!-- More products... -->
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>

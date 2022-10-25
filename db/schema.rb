@@ -10,9 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_112733) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_091411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "competition_entries", force: :cascade do |t|
+    t.bigint "competition_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "winner_id"
+    t.bigint "runner_up_id"
+    t.integer "points", default: 0, null: false
+    t.integer "correct_scores", default: 0, null: false
+    t.integer "goal_difference", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["competition_id", "user_id"], name: "index_competition_entries_on_competition_id_and_user_id", unique: true
+    t.index ["competition_id"], name: "index_competition_entries_on_competition_id"
+    t.index ["runner_up_id"], name: "index_competition_entries_on_runner_up_id"
+    t.index ["user_id"], name: "index_competition_entries_on_user_id"
+    t.index ["winner_id"], name: "index_competition_entries_on_winner_id"
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -80,6 +97,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_112733) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "competition_entries", "competitions"
+  add_foreign_key "competition_entries", "teams", column: "runner_up_id"
+  add_foreign_key "competition_entries", "teams", column: "winner_id"
+  add_foreign_key "competition_entries", "users"
   add_foreign_key "competitions", "scoring_systems"
   add_foreign_key "competitions", "team_categories"
   add_foreign_key "competitions", "users"

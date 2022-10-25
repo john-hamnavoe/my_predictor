@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :competitions, except: [:destroy] do
     resources :fixtures, only: [:edit, :update, :create, :index]
   end
+  resources :competition_entries, only: [:new, :edit, :update, :create]
 end

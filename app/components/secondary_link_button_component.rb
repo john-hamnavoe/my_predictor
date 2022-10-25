@@ -16,6 +16,6 @@ class SecondaryLinkButtonComponent < ApplicationComponent
   private
 
   def classes
-    "#{button_classes} flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 sm:px-8"
+    "#{button_classes} flex items-center justify-center rounded-md border border-gray-200 bg-white px-4 py-3 text-base font-medium text-indigo-700 shadow-sm hover:bg-indigo-50 sm:px-8"
   end
 end

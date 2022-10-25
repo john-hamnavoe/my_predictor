@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  competition: one
+  user: bob
+  winner: scotland
+  runner_up: england
+
+two:
+  competition: two
+  user: sarah
+  winner: brazil
+  runner_up: argentina
