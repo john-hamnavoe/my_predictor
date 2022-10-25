@@ -93,7 +93,7 @@
             </div>
           </div>
           <div class="ml-5 mt-2">
-            <% Fixture.all.each do |fixture| %>
+            <% Fixture.eager_load(:home_team).eager_load(:away_team).all.each do |fixture| %>
               <%= render Fixtures::DisplayComponent.new(fixture) %>
             <% end %>
           </div>          

@@ -7,6 +7,7 @@ class CompetitionEntriesController < ApplicationController
   end
 
   def edit
+    @locked_fixtures = @competition_entry.competition.locked_fixtures.count.positive?
   end
 
   def update

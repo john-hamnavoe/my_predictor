@@ -14,12 +14,12 @@
     <div class="grid grid-cols-2 gap-2">
       <div>
         <%= render Forms::FieldComponent.new(form, :winner_id, label: "Predicted Winner") do |field| %>
-          <% field.with_input_select(classes: "rounded-none", options: teams_by_competition_for_select(competition_entry.competition_id), include_blank: true) %>
+          <% field.with_input_select(classes: "rounded-none", options: teams_by_competition_for_select(competition_entry.competition_id), include_blank: true, read_only: @locked_fixtures) %>
         <% end %>  
       </div>  
       <div>
         <%= render Forms::FieldComponent.new(form, :runner_up_id, label: "Predicted Runner Up") do |field| %>
-          <% field.with_input_select(classes: "rounded-none", options: teams_by_competition_for_select(competition_entry.competition_id), include_blank: true) %>
+          <% field.with_input_select(classes: "rounded-none", options: teams_by_competition_for_select(competition_entry.competition_id), include_blank: true, read_only: @locked_fixtures) %>
         <% end %>    
       </div>
     </div>

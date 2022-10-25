@@ -3,7 +3,7 @@ class CompetitionEntry < ApplicationRecord
   belongs_to :user
   belongs_to :winner, class_name: "Team", optional: true
   belongs_to :runner_up, class_name: "Team", optional: true
-  has_many :predictions, -> { joins(:fixture).order("fixtures.date asc") }, dependent: :destroy
+  has_many :predictions, -> { eager_load(:fixture).eager_load(fixture: [:home_team, :away_team]).order("fixtures.date asc") }, dependent: :destroy
 
   after_commit :create_predictions, on: [:create]
 
