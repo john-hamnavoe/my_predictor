@@ -11,5 +11,10 @@ module SelectHelper
 
   def teams_for_select(team_category_id)
     Team.where(team_category_id: team_category_id).order(:name).map { |team| [team.name, team.id] }
-  end  
+  end
+
+  def teams_by_competition_for_select(competition_id)
+    teams = Competition.find(competition_id).fixtures.pluck(:home_team_id, :away_team_id).flatten.uniq
+    Team.where(id: teams).order(:name).map { |team| [team.name, team.id] }
+  end    
 end

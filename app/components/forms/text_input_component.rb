@@ -13,7 +13,7 @@ class Forms::TextInputComponent < Forms::BaseComponent
   end
 
   def call
-    form.send(method, field, class: input_class, autocomplete: @autocomplete, placeholder: @placeholder, autofocus: @autofocus, data: @data)
+    form.send(method, field, class: input_class, autocomplete: @autocomplete, placeholder: @placeholder, autofocus: @autofocus, data: @data, min: min)
   end
 
   private
@@ -24,6 +24,10 @@ class Forms::TextInputComponent < Forms::BaseComponent
 
   def rounded_class 
     @rounded ? "rounded-md" : "rounded-none"
+  end
+
+  def min
+    @type == :number ? 0 : nil
   end
 
   def input_class

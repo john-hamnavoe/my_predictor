@@ -6,6 +6,7 @@ class CompetitionEntriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @bob = users(:bob)
     @competition_entry = competition_entries(:one)
+    @prediction = predictions(:one)
   end
 
   test "should get new" do
@@ -28,7 +29,7 @@ class CompetitionEntriesControllerTest < ActionDispatch::IntegrationTest
         post competition_entries_path, params: { competition_entry: { competition_id: competitions(:five).id } }
       end
     end
-    assert_redirected_to root_path
+    assert_redirected_to dashboards_path
   end
 
   test "should not create competition_entry if not logged in" do
@@ -60,19 +61,27 @@ class CompetitionEntriesControllerTest < ActionDispatch::IntegrationTest
     assert_template :new
   end
 
+  test "should get edit" do
+    sign_in @bob
+    get edit_competition_entry_path(@competition_entry)
+    assert_response :success
+  end
 
-  # test "should get edit" do
-  #   get competition_entries_edit_url
-  #   assert_response :success
-  # end
+  test "should update entry" do
+    sign_in @bob
+    patch competition_entry_path(@competition_entry), params: { competition_entry: { predictions_attributes: [{id: @prediction.id, home_score: 3, away_score: 2 }] } }
+    assert_redirected_to dashboards_path
+    @prediction.reload
+    assert_equal 3, @prediction.home_score
+    assert_equal 2, @prediction.away_score
+  end
 
-  # test "should get update" do
-  #   get competition_entries_update_url
-  #   assert_response :success
-  # end
-
-  # test "should get create" do
-  #   get competition_entries_create_url
-  #   assert_response :success
-  # end
+  test "should not update entry" do
+    sign_in @bob
+    patch competition_entry_path(@competition_entry), params: { competition_entry: {user_id: nil, predictions_attributes: [{id: @prediction.id, home_score: 3, away_score: 2 }] } }
+    assert_template :edit
+    @prediction.reload
+    assert_equal 1, @prediction.home_score
+    assert_equal 1, @prediction.away_score
+  end
 end

@@ -10,13 +10,18 @@ class CompetitionEntriesController < ApplicationController
   end
 
   def update
+    if @competition_entry.update(competition_entry_params)
+      redirect_to dashboards_path, notice: "Competition entry was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def create
     @competition_entry = CompetitionEntry.new(competition_entry_params)
     @competition_entry.user = current_user
     if @competition_entry.save
-      redirect_to root_path, notice: "Competition entry was successfully created."
+      redirect_to dashboards_path, notice: "Competition entry was successfully created."
     else
       set_available_competitions
       render :new, status: :unprocessable_entity
@@ -26,7 +31,7 @@ class CompetitionEntriesController < ApplicationController
   private
 
   def competition_entry_params
-    params.require(:competition_entry).permit(:competition_id, :user_id, :winner_id, :runner_up_id)
+    params.require(:competition_entry).permit(:competition_id, :user_id, :winner_id, :runner_up_id, predictions_attributes: [:id, :home_score, :away_score])
   end
   
   def set_competition_entry

@@ -18,7 +18,7 @@
           <%= render Fixtures::BadgeCorrectComponent.new(entry.correct_scores) %>
         </div>                
         <div class="ml-4 mt-4 flex-shrink-0">
-          <%= render PrimaryLinkButtonComponent.new(title: "Update Predictions", path: "#", small: true) %>   
+          <%= render PrimaryLinkButtonComponent.new(title: "Update Predictions", path: edit_competition_entry_path(entry), small: true) %>   
         </div>
       </div>
     </div>

@@ -1,0 +1,11 @@
+<div class="flex flex-row items-start">
+    <p class="flex-none pt-1 md:pt-0  w-12 md:w-16 text-gray-600 text-sm md:text-base"><%= form.object.fixture.date.strftime("%d/%m") %>:</p>
+    <p class="ml-1 pt-1 md:pt-0 flex-none w-24 md:w-28 text-sm md:text-base"><%= form.object.fixture.home_team.name %></p>
+    <%= render Forms::FieldComponent.new(form, :home_score, label: "Home Score", label_class: "sr-only") do |field| %>
+      <% field.with_input_number(classes: "rounded-md w-12") %>
+    <% end %>
+    <p class="ml-1 md:ml-4 pt-1 md:pt-0 flex-none w-24 md:w-28 text-sm md:text-base"><%= form.object.fixture.away_team.name %></p>
+    <%= render Forms::FieldComponent.new(form, :away_score, label: "Away Score", label_class: "sr-only") do |field| %>
+      <% field.with_input_number(classes: "rounded-md w-12") %>
+    <% end %>
+</div>

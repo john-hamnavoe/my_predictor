@@ -1,0 +1,38 @@
+<%= form_with(model: competition_entry, id: "#{dom_id(competition_entry)}_form") do |form| %>
+  <% if competition_entry.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(competition_entry.errors.count, "error") %> prohibited this competition_entry from being saved:</h2>
+
+      <ul>
+        <% competition_entry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
+    <div class="grid grid-cols-2 gap-2">
+      <div>
+        <%= render Forms::FieldComponent.new(form, :winner_id, label: "Predicted Winner") do |field| %>
+          <% field.with_input_select(classes: "rounded-none", options: teams_by_competition_for_select(competition_entry.competition_id), include_blank: true) %>
+        <% end %>  
+      </div>  
+      <div>
+        <%= render Forms::FieldComponent.new(form, :runner_up_id, label: "Predicted Runner Up") do |field| %>
+          <% field.with_input_select(classes: "rounded-none", options: teams_by_competition_for_select(competition_entry.competition_id), include_blank: true) %>
+        <% end %>    
+      </div>
+    </div>
+    <div class="space-y-0">
+      <%= render Forms::LabelComponent.new(form, :predictions, label: "Predictions", label_class: "block text-sm font-medium text-gray-700")%>
+      <%= form.fields_for :predictions do |prediction| %>
+        <%= render "prediction_fields", form: prediction %>
+      <% end %>  
+    </div>
+    <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-end">
+      <div class="text-right">
+        <%= render Forms::ButtonSubmitComponent.new(button_classes: "ml-3") %>
+      </div>
+    </div>
+  </div>
+<% end %>
