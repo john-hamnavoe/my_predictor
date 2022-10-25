@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  competition_entry: one
+  fixture: one
+  home_score: 1
+  away_score: 1
+  correct: false
+  goal_difference: 1
+
+two:
+  competition_entry: two
+  fixture: two
+  home_score: 1
+  away_score: 1
+  correct: false
+  goal_difference: 1

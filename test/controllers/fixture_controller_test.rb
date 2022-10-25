@@ -49,7 +49,9 @@ class FixtureControllerTest < ActionDispatch::IntegrationTest
   test "should create fixture" do
     sign_in @bob
     assert_difference("Fixture.count", +1) do
-      post competition_fixtures_path(@competition, format: :turbo_stream), params: { fixture: { home_team_id: teams(:scotland).id, away_team_id: teams(:england).id, date: Date.today } }
+      assert_difference("Prediction.count", +1) do
+        post competition_fixtures_path(@competition, format: :turbo_stream), params: { fixture: { home_team_id: teams(:scotland).id, away_team_id: teams(:england).id, date: Date.today } }
+      end
     end
     assert_response :success
   end
@@ -57,7 +59,9 @@ class FixtureControllerTest < ActionDispatch::IntegrationTest
   test "should not create fixture" do
     sign_in @bob
     assert_no_difference("Fixture.count") do
-      post competition_fixtures_path(@competition, format: :turbo_stream), params: { fixture: { home_team_id: nil, away_team_id: teams(:england).id, date: Date.today } }
+      assert_no_difference("Prediction.count") do
+        post competition_fixtures_path(@competition, format: :turbo_stream), params: { fixture: { home_team_id: nil, away_team_id: teams(:england).id, date: Date.today } }
+      end
     end
     assert_response :success
   end

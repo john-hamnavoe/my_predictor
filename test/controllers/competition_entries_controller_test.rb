@@ -24,14 +24,18 @@ class CompetitionEntriesControllerTest < ActionDispatch::IntegrationTest
   test "should create competition_entry" do
     sign_in @bob
     assert_difference("CompetitionEntry.count", +1) do
-      post competition_entries_path, params: { competition_entry: { competition_id: competitions(:five).id } }
+      assert_difference("Prediction.count", +2) do
+        post competition_entries_path, params: { competition_entry: { competition_id: competitions(:five).id } }
+      end
     end
     assert_redirected_to root_path
   end
 
   test "should not create competition_entry if not logged in" do
     assert_no_difference("CompetitionEntry.count") do
-      post competition_entries_path, params: { competition_entry: { competition_id: competitions(:five).id } }
+      assert_no_difference("Prediction.count") do      
+        post competition_entries_path, params: { competition_entry: { competition_id: competitions(:five).id } }
+      end
     end
     assert_redirected_to new_user_session_path
   end
@@ -39,7 +43,9 @@ class CompetitionEntriesControllerTest < ActionDispatch::IntegrationTest
   test "should not create competition_entry if already entered" do
     sign_in @bob
     assert_no_difference("CompetitionEntry.count") do
-      post competition_entries_path, params: { competition_entry: { competition_id: competitions(:one).id } }
+      assert_no_difference("Prediction.count") do      
+        post competition_entries_path, params: { competition_entry: { competition_id: competitions(:one).id } }
+      end
     end
     assert_template :new
   end
@@ -47,7 +53,9 @@ class CompetitionEntriesControllerTest < ActionDispatch::IntegrationTest
   test "should not create competition_entry if invalid" do
     sign_in @bob
     assert_no_difference("CompetitionEntry.count") do
-      post competition_entries_path, params: { competition_entry: { competition_id: nil } }
+      assert_no_difference("Prediction.count") do      
+        post competition_entries_path, params: { competition_entry: { competition_id: nil } }
+      end
     end
     assert_template :new
   end

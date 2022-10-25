@@ -17,3 +17,21 @@ two:
   home_score: 1
   away_score: 1
   locked: false
+
+three:
+  home_team: scotland
+  away_team: england
+  date: 2022-10-24
+  competition: five
+  home_score:
+  away_score:
+  locked: false
+
+four:
+  home_team: brazil
+  away_team: argentina
+  date: 2022-10-24
+  competition: five
+  home_score:
+  away_score:
+  locked: false
