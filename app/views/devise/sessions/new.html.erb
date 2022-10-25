@@ -9,7 +9,7 @@
       </p>
     </div>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6", data: {turbo: false }} ) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="-space-y-px rounded-md shadow-sm">
         <%= render Forms::FieldComponent.new(f, :email, label: "Email address", label_class: "sr-only") do |field| %>
