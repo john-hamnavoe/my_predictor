@@ -16,10 +16,10 @@
       <% field.with_input_date(classes: "rounded-l-md", autofocus: true, data: {controller: "autofocus"}) %>
     <% end %>       
     <%= render Forms::FieldComponent.new(form, :home_team_id, label: "Fixture Home Team", label_class: "sr-only") do |field| %>
-      <% field.with_input_select(classes: "rounded-none", options: teams_for_select(team_category_id), include_blank: true) %>
+      <% field.with_input_select(options: teams_for_select(team_category_id), include_blank: true, rounded: false) %>
     <% end %>    
     <%= render Forms::FieldComponent.new(form, :away_team_id, label: "Fixture Away Team", label_class: "sr-only") do |field| %>
-      <% field.with_input_select(classes: "rounded-none", options: teams_for_select(team_category_id), include_blank: true) %>
+      <% field.with_input_select(options: teams_for_select(team_category_id), include_blank: true, rounded: false) %>
     <% end %>    
     <%= render Forms::InlineButtonSubmitComponent.new(form) %>
   </div>
