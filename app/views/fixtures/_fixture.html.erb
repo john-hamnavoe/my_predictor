@@ -1,0 +1,5 @@
+<li id="<%= "#{dom_id(fixture)}_container" %>" class="py-2 px-4 border-b border-gray-100">
+  <%= turbo_frame_tag dom_id(fixture) do %>
+    <%= render Fixtures::DisplayLinkComponent.new(fixture)%>
+  <% end %>
+</li>

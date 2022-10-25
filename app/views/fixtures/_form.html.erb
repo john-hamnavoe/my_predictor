@@ -1,0 +1,26 @@
+<%= form_with(model: [fixture.competition, fixture], id: "#{dom_id(fixture)}_form") do |form| %>
+  <% if fixture.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(fixture.errors.count, "error") %> prohibited this fixture from being saved:</h2>
+
+      <ul>
+        <% fixture.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="flex items-stretch flex-grow">
+    <%= form.hidden_field :competition_id, value: fixture.competition_id %>
+    <%= render Forms::FieldComponent.new(form, :date, label: "Fixture Date", label_class: "sr-only") do |field| %>
+      <% field.with_input_date(classes: "rounded-l-md", autofocus: true, data: {controller: "autofocus"}) %>
+    <% end %>       
+    <%= render Forms::FieldComponent.new(form, :home_team_id, label: "Fixture Home Team", label_class: "sr-only") do |field| %>
+      <% field.with_input_select(classes: "rounded-none", options: teams_for_select(team_category_id), include_blank: true) %>
+    <% end %>    
+    <%= render Forms::FieldComponent.new(form, :away_team_id, label: "Fixture Away Team", label_class: "sr-only") do |field| %>
+      <% field.with_input_select(classes: "rounded-none", options: teams_for_select(team_category_id), include_blank: true) %>
+    <% end %>    
+    <%= render Forms::InlineButtonSubmitComponent.new(form) %>
+  </div>
+<% end %>

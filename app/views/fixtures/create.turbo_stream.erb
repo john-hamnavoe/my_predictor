@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "fixtures" do %>
+  <%= render "fixture", fixture: @fixture %>
+<% end %>
+<%= turbo_stream.replace "#{dom_id(Fixture.new)}_form" do %>
+  <%= render "form", fixture: Fixture.new(competition_id: @competition.id), team_category_id: @competition.team_category_id %>
+<% end %>

@@ -8,4 +8,8 @@ module SelectHelper
   def team_categories_for_select
     TeamCategory.all.order(:id).map { |team_cat| [team_cat.name, team_cat.id] }
   end
+
+  def teams_for_select(team_category_id)
+    Team.where(team_category_id: team_category_id).order(:name).map { |team| [team.name, team.id] }
+  end  
 end

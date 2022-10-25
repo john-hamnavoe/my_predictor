@@ -34,6 +34,15 @@ class CompetitionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to competitions_path
   end
 
+  test "should not create competition" do
+    sign_in @bob
+    assert_no_difference("Competition.count") do
+      post competitions_url, params: { competition: { active: @competition.active, name: nil, prizes: @competition.prizes, public: @competition.public, scoring_system_id: @competition.scoring_system_id, team_category_id: @competition.team_category_id } }
+    end
+
+    assert_template :new
+  end
+
   test "should show competition" do
     sign_in @bob    
     get competition_url(@competition)
@@ -50,5 +59,13 @@ class CompetitionsControllerTest < ActionDispatch::IntegrationTest
     sign_in @bob    
     patch competition_url(@competition), params: { competition: { active: @competition.active, name: @competition.name, prizes: @competition.prizes, public: @competition.public, scoring_system_id: @competition.scoring_system_id, team_category_id: @competition.team_category_id, user_id: @competition.user_id } }
     assert_redirected_to competitions_path
+  end
+
+  test "should not update competition" do
+    sign_in @bob    
+    patch competition_url(@competition), params: { competition: { active: @competition.active, name: nil, prizes: @competition.prizes, public: @competition.public, scoring_system_id: @competition.scoring_system_id, team_category_id: @competition.team_category_id, user_id: @competition.user_id } }
+    assert_template :edit
+    @competition.reload
+    assert_not_equal nil, @competition.name
   end
 end

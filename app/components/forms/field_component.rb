@@ -7,8 +7,8 @@ class Forms::FieldComponent < ApplicationComponent
     date: ->(**args) { Forms::TextInputComponent.new(form, field, type: :date, **args) },
     # time: ->(**args) { Forms::TextInputComponent.new(form, field, type: :time, **args) },
     email: ->(**args) { Forms::TextInputComponent.new(form, field, type: :email, **args) },    
-    password: ->(**args) { Forms::TextInputComponent.new(form, field, type: :password, **args) }        
-    # ,number: ->(**args) { Forms::TextInputComponent.new(form, field, type: :number, **args) }    
+    password: ->(**args) { Forms::TextInputComponent.new(form, field, type: :password, **args) },
+    number: ->(**args) { Forms::TextInputComponent.new(form, field, type: :number, **args) }    
   }
 
   attr_reader :form, :field, :label, :help, :label_class
@@ -19,7 +19,6 @@ class Forms::FieldComponent < ApplicationComponent
     @label = label
     @help = help
     @label_class = label_class
-    @help = help
   end
 
   def label_classes

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_18_170751) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_24_112733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_170751) do
     t.index ["scoring_system_id"], name: "index_competitions_on_scoring_system_id"
     t.index ["team_category_id"], name: "index_competitions_on_team_category_id"
     t.index ["user_id"], name: "index_competitions_on_user_id"
+  end
+
+  create_table "fixtures", force: :cascade do |t|
+    t.bigint "home_team_id", null: false
+    t.bigint "away_team_id", null: false
+    t.date "date"
+    t.bigint "competition_id", null: false
+    t.integer "home_score"
+    t.integer "away_score"
+    t.boolean "locked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_team_id"], name: "index_fixtures_on_away_team_id"
+    t.index ["competition_id"], name: "index_fixtures_on_competition_id"
+    t.index ["home_team_id"], name: "index_fixtures_on_home_team_id"
   end
 
   create_table "scoring_systems", force: :cascade do |t|
@@ -68,5 +83,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_170751) do
   add_foreign_key "competitions", "scoring_systems"
   add_foreign_key "competitions", "team_categories"
   add_foreign_key "competitions", "users"
+  add_foreign_key "fixtures", "competitions"
+  add_foreign_key "fixtures", "teams", column: "away_team_id"
+  add_foreign_key "fixtures", "teams", column: "home_team_id"
   add_foreign_key "teams", "team_categories"
 end
