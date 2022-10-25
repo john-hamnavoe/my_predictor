@@ -1,16 +1,32 @@
-<h2>Forgot your password?</h2>
+<div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="w-full max-w-md space-y-8">
+    <div>
+      <%= render(LogoComponent.new) %>
+      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Password Reset</h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Or
+        <%= link_to "log in to your account", new_user_session_path, class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+      </p>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "mt-8 space-y-6", data: {turbo: false }, method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="-space-y-px rounded-md shadow-sm">
+            <%= render Forms::FieldComponent.new(f, :email, label: "Email address", label_class: "sr-only") do |field| %>
+              <% field.with_input_email(classes: "rounded-md", autocomplete: "email", placeholder: "Email address", autofocus: true) %>
+            <% end %>   
+          </div>
+
+      <%= button_tag(type: 'submit', class: "group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2") do %>
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+          <!-- Heroicon name: mini/lock-closed -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 119 0v3.75M3.75 21.75h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H3.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+          </svg>
+        </span>
+        Send me reset password instructions
+      <% end %>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
