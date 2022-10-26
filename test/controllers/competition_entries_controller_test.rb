@@ -29,7 +29,7 @@ class CompetitionEntriesControllerTest < ActionDispatch::IntegrationTest
         post competition_entries_path, params: { competition_entry: { competition_id: competitions(:five).id } }
       end
     end
-    assert_redirected_to dashboards_path
+    assert_redirected_to edit_competition_entry_path(CompetitionEntry.last)
   end
 
   test "should not create competition_entry if not logged in" do

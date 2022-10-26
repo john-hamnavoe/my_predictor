@@ -11,6 +11,12 @@ class CompetitionEntry < ApplicationRecord
 
   accepts_nested_attributes_for :predictions
 
+  def update_points
+    update(points: predictions.sum(:points), correct_scores: predictions.where(correct: true).count, goal_difference: predictions.sum(:goal_difference))
+  end
+
+  private
+
   def create_predictions
     competition.fixtures.each do |fixture|
       prediction = predictions.build(fixture: fixture)

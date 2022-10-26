@@ -22,7 +22,7 @@ class CompetitionEntriesController < ApplicationController
     @competition_entry = CompetitionEntry.new(competition_entry_params)
     @competition_entry.user = current_user
     if @competition_entry.save
-      redirect_to dashboards_path, notice: "Competition entry was successfully created."
+      redirect_to edit_competition_entry_path(@competition_entry), notice: "Competition entry was successfully created."
     else
       set_available_competitions
       render :new, status: :unprocessable_entity
