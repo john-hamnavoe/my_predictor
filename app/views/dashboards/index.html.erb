@@ -22,11 +22,11 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-4 md:gap-1 sm:grid-cols-2 lg:grid-cols-3">
       <!-- Card -->
 
       <div class="overflow-hidden rounded-lg bg-white shadow">
-        <div class="p-5">
+        <div class="md:p-5">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <!-- Heroicon name: outline/scale -->
@@ -40,44 +40,13 @@
               </dl>
             </div>
           </div>
-          <table class="mt-2 min-w-full divide-y divide-gray-200">
-            <thead>
-              <tr>
-                <th class="bg-gray-50 px-6 py-1 text-left text-sm font-semibold text-gray-900" scope="col">Position</th>
-                <th class="bg-gray-50 px-6 py-1 text-left text-sm font-semibold text-gray-900" scope="col">Player</th>
-                <th class="bg-gray-50 px-6 py-1 text-right text-sm font-semibold text-gray-900" scope="col">Points</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200 bg-white">
-              <tr class="bg-white">
-                <td class="px-6 py-1 text-sm text-gray-900">
-                  <p class="truncate text-gray-500 group-hover:text-gray-900">1</p>
-                </td>
-                <td class="whitespace-nowrap px-6 py-1 text-left text-sm text-gray-500">
-                  John Wallace
-                </td>
-                <td class="whitespace-nowrap px-6 py-1 text-right text-sm text-gray-900">
-                  89
-                </td>
-              </tr>
-              <tr class="bg-white">
-                <td class=" px-6 py-1 text-sm text-gray-900">
-                  <p class="truncate text-gray-500 group-hover:text-gray-900">2</p>
-                </td>
-                <td class="whitespace-nowrap px-6 py-1 text-left text-sm text-gray-500">
-                  Lindsay Temple
-                </td>
-                <td class="whitespace-nowrap px-6 py-1 text-right text-sm text-gray-900">
-                  78
-                </td>
-              </tr>
-              <!-- More transactions... -->
-            </tbody>
-          </table>          
+          <%= turbo_frame_tag "league_table_#{dom_id(entry.competition)}", src: competition_league_table_path(entry.competition), loading: "lazy" do %>
+            <div class="text-sm font-bold">loading...</div>
+          <% end %>       
         </div>                   
       </div>
       <div class="overflow-hidden rounded-lg bg-white shadow">
-        <div class="p-5">
+        <div class="md:p-5">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <!-- Heroicon name: outline/scale -->
@@ -92,15 +61,13 @@
               </dl>
             </div>
           </div>
-          <div class="ml-5 mt-2">
-            <% Fixture.eager_load(:home_team).eager_load(:away_team).all.each do |fixture| %>
-              <%= render Fixtures::DisplayComponent.new(fixture) %>
-            <% end %>
-          </div>          
+          <%= turbo_frame_tag "upcoming_fixtures#{dom_id(entry.competition)}", src: competition_upcoming_fixtures_path(entry.competition), loading: "lazy" do %>
+            <div class="text-sm font-bold">loading...</div>
+          <% end %>      
         </div>
       </div>
       <div class="overflow-hidden rounded-lg bg-white shadow">
-        <div class="p-5">
+        <div class="md:p-5">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <!-- Heroicon name: outline/scale -->

@@ -1,0 +1,34 @@
+ <%= turbo_frame_tag "league_table_#{dom_id(@competition)}" do %>
+  <table class="mt-2 min-w-full divide-y divide-gray-200">
+    <thead>
+      <tr>
+        <th class="bg-gray-50 px-2 py-1 text-left text-sm font-semibold text-gray-900" scope="col">Pos</th>
+        <th class="bg-gray-50 px-2 py-1 text-left text-sm font-semibold text-gray-900" scope="col">Player</th>
+        <th class="bg-gray-50 px-2 py-1 text-right text-sm font-semibold text-gray-900" scope="col">Pts</th>
+        <th class="bg-gray-50 px-2 py-1 text-right text-sm font-semibold text-gray-900" scope="col">CS</th>
+        <th class="bg-gray-50 px-2 py-1 text-right text-sm font-semibold text-gray-900" scope="col">GD</th>      
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200 bg-white">
+      <% @entries.each_with_index do |entry, index| %>
+        <tr>
+          <td class="px-2 py-1 text-left text-sm font-medium text-gray-900">
+            <%= index + 1 %>
+          </td>
+          <td class="px-2 py-1 text-left text-sm font-medium text-gray-900">
+            <%= entry.user.name %>
+          </td>
+          <td class="px-2 py-1 text-right text-sm font-medium text-gray-900">
+            <%= entry.points %>
+          </td>
+          <td class="px-2 py-1 text-right text-sm font-medium text-gray-900">
+            <%= entry.correct_scores %>
+          </td>
+          <td class="px-2 py-1 text-right text-sm font-medium text-gray-900">
+            <%= entry.goal_difference %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

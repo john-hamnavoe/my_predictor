@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "upcoming_fixtures#{dom_id(@competition)}" do %>
+  <div class="md:ml-5 mt-2">
+    <% @fixtures.each do |fixture| %>
+      <%= render Fixtures::DisplayComponent.new(fixture) %>
+    <% end %>
+  </div>    
+<% end %> 
