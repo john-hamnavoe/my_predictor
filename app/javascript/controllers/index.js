@@ -6,8 +6,10 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 import AutofocusController from "./autofocus_controller"
+import AutosaveController from "./autosave_controller"
 application.register("hello", HelloController)
 application.register("autofocus", AutofocusController)
+application.register("autosave", AutosaveController)
 
 // Import and register all TailwindCSS Components
 import { Alert, Dropdown, Modal, Tabs, Popover, Toggle, Slideover } from "tailwindcss-stimulus-components"

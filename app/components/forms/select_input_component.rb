@@ -1,19 +1,20 @@
 # frozen_string_literal: true
 
 class Forms::SelectInputComponent < Forms::BaseComponent
-  private attr_reader :options, :include_blank, :classes, :read_only, :rounded
+  private attr_reader :options, :include_blank, :classes, :read_only, :rounded, :data
 
-  def initialize(form, field, options:, classes: nil, include_blank: false, read_only: false, rounded: false)
+  def initialize(form, field, options:, classes: nil, include_blank: false, read_only: false, rounded: false, data: nil)
     super(form, field)
     @options = options
     @include_blank = include_blank
     @classes = classes
     @read_only = read_only
     @rounded = rounded
+    @data = data
   end
 
   def call
-    form.select field, options, {include_blank: include_blank}, {class: input_class, disabled: read_only}
+    form.select field, options, {include_blank: include_blank}, {class: input_class, disabled: read_only, data: data}
   end
 
   private 
