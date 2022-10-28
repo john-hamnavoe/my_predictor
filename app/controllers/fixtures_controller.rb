@@ -1,6 +1,7 @@
 class FixturesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_competition
+  before_action :set_fixture, only: [:predictions, :edit, :update]
 
   def index
     @fixtures = @competition.fixtures.order(:date)
@@ -9,11 +10,9 @@ class FixturesController < ApplicationController
   def edit
     editing_score = params[:edit_score] == "true"
     @edit_form = editing_score ? "edit_score_form" : "form"
-    @fixture = Fixture.find_by(id: params[:id])
   end
 
   def update
-    @fixture = Fixture.find_by(id: params[:id])
     respond_to do |format|
       if @fixture.update(fixture_params)
         format.turbo_stream
@@ -36,6 +35,9 @@ class FixturesController < ApplicationController
     end    
   end
 
+  def predictions
+  end
+
   private 
 
   def fixture_params
@@ -44,5 +46,9 @@ class FixturesController < ApplicationController
 
   def set_competition
     @competition = Competition.find(params[:competition_id])
+  end
+
+  def set_fixture
+    @fixture = Fixture.find(params[:id])
   end
 end

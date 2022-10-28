@@ -1,0 +1,7 @@
+<div class="flex flex-row items-center">
+  <% if form.object.fixture.locked %>
+    <%= render "prediction_expander", form: form %>
+  <% else %>
+    <%= render "prediction_fields", form: form %>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+<details>
+  <summary class="flex flex-row items-center cursor-pointer">
+   <%= render "prediction_fields", form: form%>
+  </summary>
+  <%= turbo_frame_tag dom_id(form.object.fixture, :predictions), loading: :lazy, src: predictions_competition_fixture_path(form.object.fixture.competition, form.object.fixture) do %>
+    <div class="text-sky-600 text-sm italic">Loading...</div>
+  <% end %>
+</details>
