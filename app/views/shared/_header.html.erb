@@ -19,7 +19,7 @@
           <%= render(MenuLinkComponent.new(title: "Home", path: dashboards_path)) %>    
           <%= render(MenuLinkComponent.new(title: "Competitions", path: competitions_path)) if current_user.admin? %>                     
           <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
-          <%= render(MenuLinkComponent.new(title: "About", path: "#")) %>    
+          <%= render(MenuLinkComponent.new(title: "About", path: abouts_index_url)) %>    
 
           <% if current_user.admin? %>
             <div id="admin_menu" data-controller="dropdown">
@@ -66,7 +66,7 @@
               <%= render(MenuLinkComponent.new(title: "Home", path: dashboards_path)) %>           
               <%= render(MenuLinkComponent.new(title: "Competitions", path: competitions_path))  if current_user.admin? %>                     
               <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
-              <%= render(MenuLinkComponent.new(title: "About", path: "#")) %>    
+              <%= render(MenuLinkComponent.new(title: "About", path: abouts_index_url)) %>    
               <%= render(MenuLinkComponent.new(title: "Teams", path: teams_path))  if current_user.admin? %>   
             </div>
             <div class="mt-6">              
