@@ -1,13 +1,19 @@
 <%= turbo_frame_tag dom_id(@fixture, :predictions) do %>
 <div class="m-3 px-3 py-2 w-full rounded shadow-md border-indigo-300  shadow-indigo-200">
-<div class="grid grid-cols-2 gap-x-5">
-  <% @fixture.predictions.eager_load(competition_entry: [:user]).order("users.last_name").each do |prediction| %>
-    <div>
-      <p class="text-gray-900 text-sm"><%= prediction.competition_entry.user.name %></p>
+  <% if @fixture.locked %>
+    <div class="grid grid-cols-2 gap-x-5">
+      <% @fixture.predictions.eager_load(competition_entry: [:user]).order("users.last_name").each do |prediction| %>
+        <div>
+          <p class="text-gray-900 text-sm"><%= prediction.competition_entry.user.name %></p>
+        </div>
+        <div>
+          <p class="text-indigo-900 text-sm"><%= prediction.home_score %>-<%= prediction.away_score %></p>
+        </div>
+      <% end %>
     </div>
-    <div>
-      <p class="text-indigo-900 text-sm"><%= prediction.home_score %>-<%= prediction.away_score %></p>
+  <% else %>
+    <div class="grid grid-cols-2 gap-x-5">
+      <p class="text-indigo-900 text-sm col-span-2">Check back later when the fixture is locked!</p>
     </div>
   <% end %>
-</div>
 <% end %>
