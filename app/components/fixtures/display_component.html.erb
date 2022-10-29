@@ -1,8 +1,8 @@
 <div class="flex items-center">
   <div class="grow">
-    <div class="grid grid-cols-3 md:grid-cols-4 gap-0 <%= font %>">
-      <div class="hidden md:grid place-items-end"><p class="text-sm md:text-base"><%=fixture.date.strftime("%d/%m")%></p></div>
-      <div class="grid place-items-end"><p class="text-sm md:text-base"><%=fixture.home_team.name%></p></div>
+    <div class="grid grid-cols-3 md:grid-cols-6 gap-0 <%= font %>">
+      <div class="hidden md:grid place-items-end"><p class="text-sm"><%=fixture.date.strftime("%d/%m")%></p></div>
+      <div class="grid md:col-span-2 place-items-end"><p class="text-sm"><%=fixture.home_team.name%></p></div>
       <div class="grid grid-cols-2 gap-1 place-items-center">
         <% if scores_present? %>
           <p class="col-span-2"> v </p>
@@ -11,7 +11,7 @@
           <p class="bg-yellow-400 border-gray-700 text-black border-2 w-7 px-1 py-0 text-sm text-center"> <%= fixture.away_score %></p>
         <% end %>
       </div>
-      <div><p class="text-sm md:text-base"><%=fixture.away_team.name%></p></div>
+      <div class="md:col-span-2"><p class="text-sm "><%=fixture.away_team.name%></p></div>
     </div>
   </div>
 </div>

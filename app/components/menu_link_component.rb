@@ -17,6 +17,10 @@ class MenuLinkComponent < ApplicationComponent
   private
 
   def classes
-    "#{link_classes} text-base font-medium text-gray-500 hover:text-gray-900"
+    "#{link_classes} #{active_class} rounded-md text-base font-medium py-2 px-3 text-gray-500 hover:text-gray-900 #{path}"
+  end
+
+  def active_class 
+    request.path.start_with?(path) ? "bg-gray-200" : ""
   end
 end
