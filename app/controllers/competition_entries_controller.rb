@@ -11,14 +11,11 @@ class CompetitionEntriesController < ApplicationController
   end
 
   def update
-      if @competition_entry.update(competition_entry_params)
-        redirect_to dashboards_path, notice: "Competition entry was successfully updated." unless params[:commit] == "1"
-        render turbo_stream: turbo_stream.replace("#save_status", partial: "saving_message", locals: { message: "...auto saved." }) if params[:commit] == "1"
-      else
-        render :edit, status: :unprocessable_entity unless params[:commit] == "1"
-        render turbo_stream: turbo_stream.replace("#save_status", partial: "saving_message", locals: { message: "...auto saving is failing, save manually." }) if params[:commit] == "1"
-      end
-      
+    if @competition_entry.update(competition_entry_params)
+      redirect_to dashboards_path, notice: "Competition entry was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end  
   end
 
   def create

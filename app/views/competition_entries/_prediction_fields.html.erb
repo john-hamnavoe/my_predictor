@@ -2,11 +2,11 @@
 <p class="hidden md:flex-none pt-1 md:pt-0 w-12 md:w-16 text-gray-600 text-sm md:text-base"><%= form.object.fixture.date.strftime("%d/%m") %>:</p>
 <p class="pt-1 md:pt-0 flex-none w-20 md:w-28 text-gray-900 text-xs md:text-base text-end mr-1"><%= form.object.fixture.home_team.name %></p>
 <%= render Forms::FieldComponent.new(form, :home_score, label: "Home Score", label_class: "sr-only") do |field| %>
-  <% field.with_input_number(classes: "rounded-md w-12 text-sm", read_only: form.object.fixture.locked, data: { action: "change->autosave#save" }) %>
+  <% field.with_input_number(classes: "rounded-md w-12 text-sm", read_only: form.object.fixture.locked) %>
 <% end %>
 <p class="mr-1 pt-1 md:pt-0 flex-none w-20 md:w-28 text-gray-900 text-xs md:text-base text-end"><%= form.object.fixture.away_team.name %></p>
 <%= render Forms::FieldComponent.new(form, :away_score, label: "Away Score", label_class: "sr-only") do |field| %>
-  <% field.with_input_number(classes: "rounded-md w-12 text-sm", read_only: form.object.fixture.locked, data: { action: "change->autosave#save" }) %>
+  <% field.with_input_number(classes: "rounded-md w-12 text-sm", read_only: form.object.fixture.locked) %>
 <% end %>
 <p class="ml-2 text-gray-900 text-xs md:text-base w-6 md:w-8"><%= form.object.points %></p>
 <p class="ml-2 text-gray-900 text-xs md:text-base"><%= form.object.fixture.home_score %>-<%= form.object.fixture.home_score %></p>
