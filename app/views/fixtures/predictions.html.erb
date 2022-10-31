@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(@fixture, :predictions) do %>
-<div class="m-3 px-3 py-2 w-full rounded shadow-md border-indigo-300  shadow-indigo-200">
+<div class="m-3 px-3 py-2 w-7xl rounded shadow-md border-indigo-300  shadow-indigo-200">
   <% if @fixture.locked %>
     <div class="grid grid-cols-2 gap-x-5">
       <% @fixture.predictions.eager_load(competition_entry: [:user]).order("users.last_name").each do |prediction| %>

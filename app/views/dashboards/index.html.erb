@@ -1,15 +1,19 @@
+<% if notice.present? %>
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<% end %>
+
 <div class="flex justify-between items-center">
   <h1 class="font-bold text-lg md:text-4xl">Hello <%= current_user.name %></h1>
   <%= render SecondaryLinkButtonComponent.new(title: "Join Competition", path: new_competition_entry_path) %>
 </div>
 
 <% @competition_entries.each do |entry| %>
-  <div class="mt-2 overflow-hidden bg-white sm:rounded-lg sm:drop-shadow-md">
-    <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+  <div class="mt-2 overflow-hidden bg-white rounded-lg drop-shadow-2xl">
+    <div class="border md:border-0 border-gray-200 bg-blue-50 px-4 py-5 sm:px-6">
       <div class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
         <div class="ml-4 mt-4">
           <h3 class="text-lg font-medium leading-6 text-gray-900"><%= entry.competition.name %></h3>
-          <p class="mt-1 text-sm text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit quam corrupti consectetur.</p>
+          <p class="mt-1 text-sm text-gray-700">You have currently <%= entry.incomplete_predictions_count %> predictions to complete.</p>
         </div>
         <div class="ml-4 mt-4 flex-shrink-0">
           <%= render Fixtures::BadgeScoreComponent.new(entry.points) %>
@@ -22,11 +26,11 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 gap-4 md:gap-1 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 md:gap-1 lg:grid-cols-3 md:divide-x">
       <!-- Card -->
 
-      <div class="overflow-hidden rounded-lg bg-white shadow">
-        <div class="md:p-5">
+      <div class="overflow-hidden">
+        <div class="md:p-5 p-2 border md:border-0 border-gray-300">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <!-- Heroicon name: outline/scale -->
@@ -45,8 +49,8 @@
           <% end %>       
         </div>                   
       </div>
-      <div class="overflow-hidden rounded-lg bg-white shadow">
-        <div class="md:p-5">
+      <div class="overflow-hidden">
+        <div class="md:p-5 p-2 border-b border-r border-l  md:border-0 border-gray-300">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <!-- Heroicon name: outline/scale -->
@@ -66,8 +70,8 @@
           <% end %>      
         </div>
       </div>
-      <div class="overflow-hidden rounded-lg bg-white shadow">
-        <div class="md:p-5">
+      <div class="overflow-hidden">
+        <div class="md:p-5 p-2 rounded-b-md border-b border-r border-l md:border-0 border-gray-300">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <!-- Heroicon name: outline/scale -->
@@ -83,13 +87,14 @@
           </div> 
           <%= turbo_frame_tag "news_headlines_#{dom_id(entry.competition)}", src: competition_latest_headlines_path(entry.competition), loading: "lazy" do %>
             <div class="text-sm font-bold">loading...</div>
-          <% end %>       
+          <% end %>     
+          <div class="bg-white px-5 py-3">
+            <div class="text-sm">
+              <%= link_to "View all", news_index_path, class: "font-medium text-cyan-700 hover:text-cyan-900" %>
+            </div>
+          </div>            
         </div>
-        <div class="bg-white px-5 py-3">
-          <div class="text-sm">
-            <%= link_to "View all", news_index_path, class: "font-medium text-cyan-700 hover:text-cyan-900" %>
-          </div>
-        </div>
+
       </div>
       <!-- More items... -->
     </div>

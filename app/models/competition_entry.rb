@@ -15,6 +15,10 @@ class CompetitionEntry < ApplicationRecord
     update(points: predictions.sum(:points), correct_scores: predictions.where(correct: true).count, goal_difference: predictions.sum(:goal_difference))
   end
 
+  def incomplete_predictions_count
+    predictions.where("fixtures.locked = false").where("predictions.home_score is null or predictions.away_score is null").count
+  end
+
   private
 
   def create_predictions
