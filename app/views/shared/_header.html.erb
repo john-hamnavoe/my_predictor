@@ -18,7 +18,7 @@
         <nav class="hidden space-x-10 md:flex">
           <%= render(MenuLinkComponent.new(title: "Home", path: dashboards_path)) %>    
           <%= render(MenuLinkComponent.new(title: "Competitions", path: competitions_path)) if current_user.admin? %>                     
-          <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
+          <%= render(MenuLinkComponent.new(title: "News", path: news_index_path)) %>              
           <%= render(MenuLinkComponent.new(title: "About", path: abouts_path)) %>    
 
           <% if current_user.admin? %>
@@ -65,7 +65,7 @@
             <div class="grid grid-cols-2 gap-4">
               <%= render(MenuLinkComponent.new(title: "Home", path: dashboards_path)) %>           
               <%= render(MenuLinkComponent.new(title: "Competitions", path: competitions_path))  if current_user.admin? %>                     
-              <%= render(MenuLinkComponent.new(title: "News", path: "#")) %>              
+              <%= render(MenuLinkComponent.new(title: "News", path: news_index_path)) %>              
               <%= render(MenuLinkComponent.new(title: "About", path: abouts_path)) %>    
               <%= render(MenuLinkComponent.new(title: "Teams", path: teams_path))  if current_user.admin? %>   
             </div>

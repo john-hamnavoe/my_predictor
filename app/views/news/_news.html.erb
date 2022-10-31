@@ -1,0 +1,14 @@
+
+<tr>
+  <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6"><%= news.date.strftime("%d/%m/%y") %></td>
+  <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900"><%= news.headline %></td>
+  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-900"><%= news.competition&.name %></td>
+  <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"><%= news.user&.name %></td>
+  <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+    <%= link_to "Edit", edit_news_path(news), class:"text-indigo-600 hover:text-indigo-900" if news.user == current_user %>  
+    <%= link_to "View", news_path(news), class:"text-indigo-600 hover:text-indigo-900" unless news.user == current_user %>  
+  </td>
+  <td class="relative whitespace-nowrap py-2 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+    <%= link_to "Delete", news_path(news), data: { turbo_confirm: "This cannot be undone!! Are you sure?", turbo_method: :delete }, class:"text-red-600 hover:text-red-900" if news.user == current_user %>  
+  </td>  
+</tr>

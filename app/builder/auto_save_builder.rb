@@ -1,8 +1,8 @@
 class AutoSaveBuilder < ActionView::Helpers::FormBuilder
-  def check_box(attribute, options = {})
-    merge_data_controller(options)
-    super(attribute, options)
-  end
+  # def check_box(attribute, options = {})
+  #   merge_data_controller(options)
+  #   super(attribute, options)
+  # end
 
   # def collection_check_boxes(attribute, collection, value_method, text_method, options = {}, html_options = {}, &block)
   #   merge_data_controller(html_options)
@@ -109,20 +109,20 @@ class AutoSaveBuilder < ActionView::Helpers::FormBuilder
     super(method, choices, options, html_options, &block)
   end
 
-  def text_area(attribute, options = {})
-    merge_data_controller(options)
-    super(attribute, options)
-  end
+  # def text_area(attribute, options = {})
+  #   merge_data_controller(options)
+  #   super(attribute, options)
+  # end
 
   # def telephone_field(attribute, options = {})
   #   merge_data_controller(options)
   #   super(attribute, options)
   # end
 
-  def text_field(attribute, options = {})
-    merge_data_controller(options)
-    super(attribute, options)
-  end
+  # def text_field(attribute, options = {})
+  #   merge_data_controller(options)
+  #   super(attribute, options)
+  # end
 
   # def time_field(attribute, options = {})
   #   merge_data_controller(options)

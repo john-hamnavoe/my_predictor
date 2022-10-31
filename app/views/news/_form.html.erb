@@ -1,0 +1,41 @@
+<%= form_with(model: news, class: "contents") do |form| %>
+  <% if news.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(news.errors.count, "error") %> prohibited this news from being saved:</h2>
+
+      <ul>
+        <% news.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
+    <div class="grid grid-cols-4 gap-x-1 gap-y-2">
+      <div class="col-span-4" >
+        <%= render Forms::FieldComponent.new(form, :headline) do |field| %>
+          <% field.with_input_text(rounded: true) %>
+        <% end %>
+      </div>
+      <div class="col-span-1" >
+        <%= render Forms::FieldComponent.new(form, :date) do |field| %>
+          <% field.with_input_date(rounded: true) %>
+        <% end %>
+      </div>      
+      <div class="col-span-3">
+        <%= render Forms::FieldComponent.new(form, :competition_id, label: "Related Competition") do |field| %>
+          <% field.with_input_select(rounded: true, options: competitions_for_select, include_blank: true) %>
+        <% end %>    
+      </div>
+      <div class="mt-2 col-span-4">
+        <%= form.rich_text_area :article, class: "trix-editor block shadow rounded-md border border-gray-200 outline-none w-full" %>
+      </div>  
+  </div>
+  <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-end">
+    <div class=" text-right">
+      <%= render Forms::ButtonCancelComponent.new(news_index_path) %>      
+      <%= render Forms::ButtonSubmitComponent.new(button_classes: "ml-3") %>
+    </div>
+  </div>  
+<% end %>

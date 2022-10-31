@@ -7,4 +7,5 @@ class User < ApplicationRecord
 
   has_many :competitions, dependent: :destroy
   has_many :competition_entries, dependent: :destroy
+  has_many :news, dependent: :destroy
 end

@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "news_headlines_#{dom_id(@competition)}" do %>
+<ul role="list" class="divide-y divide-gray-200">
+  <% @news.each do |news|%>
+    <li class="flex py-4 px-4">
+      <span> <%= link_to news.headline, news_path(news), class: "text-sm font-medium text-indigo-600" %> <span class="text-xs italic text-gray-500">by <%= news.user.name %></span></span>
+    </li>
+  <% end %>
+</ul>
+<% end %>

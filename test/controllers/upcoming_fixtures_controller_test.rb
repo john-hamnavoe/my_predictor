@@ -6,6 +6,9 @@ class UpcomingFixturesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @competition = competitions(:one)
     @bob = users(:bob)
+    @competition.fixtures.each do |fixture|
+      fixture.update(date: Time.zone.today)
+    end
   end
 
   test "should get show" do

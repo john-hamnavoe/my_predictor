@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  get 'latest_headlines/show'
   root "home#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     end
     resource :league_table, only: [:show]
     resource :upcoming_fixtures, only: [:show]
+    resource :latest_headlines, only: [:show]
   end
   resources :competition_entries, only: [:new, :edit, :update, :create]
-
+  resources :news
 
 
 end

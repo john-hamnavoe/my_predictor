@@ -1,0 +1,16 @@
+<div class="bg-white">
+  <div class="mx-auto max-w-4xl py-8 px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900"><%= @news.headline %></h2>
+      <p class="mt-4 text-md text-gray-500 italic">Posted: <%= @news.date.strftime("%d/%m/%y") %> by <%= @news.user.name %> </p>
+    </div>
+    <div class="mt-4 trix-content">
+      <%= @news.article %>
+    </div>
+
+    <div class="mt-8">
+      <%= link_to "Home", dashboards_path, class: "text-sm font-medium text-indigo-600 hover:text-indigo-500" %> |
+      <%= link_to "All Articles", news_index_path, class: "text-sm font-medium text-indigo-600 hover:text-indigo-500" %>
+    </div>
+  </div>
+</div>
