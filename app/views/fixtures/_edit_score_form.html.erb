@@ -10,20 +10,25 @@
       </ul>
     </div>
   <% end %>
-  <div class="flex justify-center items-stretch flex-grow">
-    <%= form.hidden_field :competition_id, value: fixture.competition_id %>
-    <%= render Forms::LabelComponent.new(form, :date, label: fixture.date.strftime("%d/%m/%Y")) %>  
-    <%= render Forms::LabelComponent.new(form, :away_score, label: fixture.home_team.name) %>  
-    <%= render Forms::FieldComponent.new(form, :home_score, label: "Fixture Date", label_class: "sr-only") do |field| %>
-      <% field.with_input_number(classes: "rounded-none w-16", autofocus: true, data: {controller: "autofocus"}) %>
-    <% end %>    
-    <%= render Forms::LabelComponent.new(form, :away_score, label: fixture.away_team.name) %>     
-    <%= render Forms::FieldComponent.new(form, :away_score, label: "Fixture Home Team", label_class: "sr-only") do |field| %>
-      <% field.with_input_number(classes: "rounded-none w-16") %>
-    <% end %>
-    <div class="py-2 px-2">
-      <%= render Forms::CheckboxInputComponent.new(form, :locked) %>
+  <div class="grid grid-cols-1 md:flex md:justify-center">
+    <div class="flex justify-center">
+      <%= form.hidden_field :competition_id, value: fixture.competition_id %>
+      <%= render Forms::LabelComponent.new(form, :date, label: fixture.date.strftime("%d/%m")) %>  
+      <%= render Forms::LabelComponent.new(form, :away_score, label: fixture.home_team.name) %>  
+      <%= render Forms::FieldComponent.new(form, :home_score, label: "Fixture Date", label_class: "sr-only") do |field| %>
+        <% field.with_input_number(classes: "rounded-none w-16", autofocus: true, data: {controller: "autofocus"}) %>
+      <% end %>    
+      <%= render Forms::LabelComponent.new(form, :away_score, label: fixture.away_team.name) %>     
+      <%= render Forms::FieldComponent.new(form, :away_score, label: "Fixture Home Team", label_class: "sr-only") do |field| %>
+        <% field.with_input_number(classes: "rounded-none w-16") %>
+      <% end %>
     </div>
-    <%= render Forms::InlineButtonSubmitComponent.new(form, rounded_class: "rounded-md") %>
-  </div>
+    <div class="md:flex">
+      <div class="py-2 px-2">
+        <%= render Forms::CheckboxInputComponent.new(form, :locked) %>
+      </div>
+
+      <%= render Forms::InlineButtonSubmitComponent.new(form, rounded_class: "rounded-md") %>
+    </div>
+  </div>    
 <% end %>

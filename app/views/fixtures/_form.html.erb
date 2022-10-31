@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="flex items-stretch flex-grow">
+  <div class="md:flex md:items-stretch md:flex-grow">
     <%= form.hidden_field :competition_id, value: fixture.competition_id %>
     <%= render Forms::FieldComponent.new(form, :date, label: "Fixture Date", label_class: "sr-only") do |field| %>
       <% field.with_input_date(classes: "rounded-l-md", autofocus: true, data: {controller: "autofocus"}) %>
