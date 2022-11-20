@@ -7,8 +7,12 @@
           <p class="text-gray-900 text-sm"><%= prediction.competition_entry.user.name %></p>
         </div>
         <div>
-          <p class="text-indigo-900 text-sm"><%= prediction.home_score %>-<%= prediction.away_score %></p>
-        </div>
+          <% pts_text = "" %>
+          <% if @fixture.home_score.present? && @fixture.away_score.present? %>
+            <% pts_text =  "(#{prediction.points} pts)" %>
+          <% end %>        
+          <p class="text-indigo-900 text-sm"><%= prediction.home_score %>-<%= prediction.away_score %> <%= pts_text %></p>          
+        </div>       
       <% end %>
     </div>
   <% else %>
